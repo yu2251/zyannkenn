@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/sample.css">
+  <title>じゃんけん</title>
+</head>
+
+<body>
+  <header>
+    <h1>じゃんけん</h1>
+  </header>
+
+  <main>
+    <ul>
+      <li id="gu_btn">グー</li>
+      <li id="cho_btn">チョキ</li>
+      <li id="par_btn">パー</li>
+    </ul>
+    <div id="com_hand">コンピュータの出した手は？</div>
+    <div id="result">結果は？</div>
+  </main>
+
+  <footer>フッター</footer>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script>
+    //ここに処理を追加
+    // グーボタン
+    $("#gu_btn").on("click", function () {
+      const min = 0;
+      const max = 4;
+      const randomNumber = Math.floor((Math.random()) * (max - min + 1)) + min;
+      console.log(randomNumber);
+
+      if (randomNumber <= 0) {
+        $("#com_hand").text("グー");
+        $("#result").text("引き分け！");
+      } else if (1 <= randomNumber && randomNumber <= 2) {
+        $("#com_hand").text("チョキ");
+        $("#result").text("あたなの勝ちです！！");
+      } else {
+        $("#com_hand").text("パー");
+        $("#result").text("残念・・・あたなの負けです。");
+      }
+    });
+
+    // チョキボタン
+    $("#cho_btn").on("click", function () {
+      const min = 0;
+      const max = 4;
+      const randomNumber = Math.floor((Math.random()) * (max - min + 1)) + min;
+      console.log(randomNumber);
+
+      if (randomNumber <= 0) {
+        $("#com_hand").text("グー");
+        $("#result").text("残念・・・あたなの負けです。");
+      } else if (1 <= randomNumber && randomNumber <= 2) {
+        $("#com_hand").text("チョキ");
+        $("#result").text("引き分け！");
+      } else {
+        $("#com_hand").text("パー");
+        $("#result").text("あたなの勝ちです！！");
+      }
+    });
+
+    // パーボタン
+    $("#par_btn").on("click", function () {
+      const min = 0;
+      const max = 4;
+      const randomNumber = Math.floor((Math.random()) * (max - min + 1)) + min;
+      console.log(randomNumber);
+
+      if (randomNumber <= 0) {
+        $("#com_hand").text("グー");
+        $("#result").text("あたなの勝ちです！！。");
+      } else if (1 <= randomNumber && randomNumber <= 2) {
+        $("#com_hand").text("チョキ");
+        $("#result").text("残念・・・あたなの負けです。");
+      } else {
+        $("#com_hand").text("パー");
+        $("#result").text("引き分け！");
+      }
+    });
+
+  </script>
+
+</body>
+
+</html>

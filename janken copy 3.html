@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/sample.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Modaal/0.4.4/css/modaal.min.css">
+  <link rel="stylesheet" type="text/css" href="css/9-6-1.css">
+  <title>じゃんけん</title>
+</head>
+
+<body>
+  <!-- body直下にカーソルとなる要素を配置 -->
+  <p id="cursor">
+    <img src="img/nikukyuu.jpg" alt="肉球">
+  </p>
+
+  <header>
+    <h1 id="h1">じゃんけん</h1>
+  </header>
+
+  <main>
+
+    <!-- モーダル本体 -->
+    <div id="modal-container" class="modal-container">
+      <div class="modal-body">
+        <!-- 閉じるボタン -->
+        <div class="modal-close">×</div>
+        <!-- モーダル内のコンテンツ -->
+        <div class="modal-content">
+          <img src="img/neko_thinking.jpg" alt="ねこさん考え中">
+          <p>★★ねこがじゃんけんに参戦★★</p>
+          <p>ただ、ねこは”パー”か”グー”しか出せません</p>
+          <p>あなたは大人です。忖度してあげて</p>
+          <p>ねこを勝たせてあげましょう♪</p>
+        </div>
+      </div>
+    </div>
+
+    <section>
+      <div class="btn-box">
+        <ul>
+          <li id="gu_btn" class="gu_btn"><img src="img/gu-.png" alt="グーです"></li>
+          <li id="cho_btn" class="cho_btn"><img src="img/choki.png" alt="チョキです"></li>
+          <li id="par_btn" class="par_btn"><img src="img/pa-.png" alt="パーです"></li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <div class="oppnonent">
+        <div id="com_hand" class="com_hand">コンピュータの出した手は？</div>
+        <div class="oppnonent-img" id="oppnonent-img">
+          <div id="oppnonent-gu-img" class="oppnonent-gu-img"><img src="img/gu-.png" alt="グーです"></div>
+          <div id="oppnonent-cho-img" class="oppnonent-cho-img"><img src="img/choki.png" alt="チョキです"></div>
+          <div id="oppnonent-pa-img" class="oppnonent-pa-img"><img src="img/pa-.png" alt="パーです"></div>
+          <div id="neko-gu-img" class="neko-gu-img"><img src="img/neko-gu-.png" alt="ねこグーです"></div>
+          <div id="neko-pa-img" class="neko-pa-img"><img src="img/neko-pa-.png" alt="ねこパーです"></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="result1">
+        <div id="result" class="result"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>nekoneko, Inc.</footer>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <script>
+    //ここに処理を追加
+    // カーソル要素
+
+    // グーボタン
+    $("#gu_btn").on("click", function () {
+      const min = 0;
+      const max = 4;
+      const randomNumber = Math.floor((Math.random()) * (max - min + 1)) + min;
+      console.log(randomNumber);
+      $("#gu-img").css('display', ' block');
+      $("#cho-img").css('display', ' none');
+      $("#pa-img").css('display', ' none');
+      $("#com_hand").css('display', ' block');
+      $("#oppnonent-gu-img").css('display', ' none');
+      $("#oppnonent-cho-img").css('display', ' none');
+      $("#oppnonent-pa-img").css('display', ' none');
+      $("#neko-gu-img").css('display', ' none');
+      $("#neko-pa-img").css('display', ' none');
+
+
+      if (randomNumber <= 0) {
+        $("#gu-img").css('display', ' block');
+        $("#oppnonent-gu-img").css('display', ' block');
+        $("#result").css('display', ' block');
+        $("#result").text("引き分け！");
+      } else if (1 <= randomNumber && randomNumber <= 2) {
+        $("#oppnonent-cho-img").css('display', ' block');
+        $("#result").css('display', ' block');
+        $("#result").text("あなたの勝ちです！！");
+      } else {
+        $("#oppnonent-pa-img").css('display', ' block');
+        $("#result").css('display', ' block');
+        $("#result").text("残念・・・あなたの負けです。");
+      }
+    });
+
+    // チョキボタン
+    $("#cho_btn").on("click", function () {
+      const min = 0;
+      const max = 4;
+      const randomNumber = Math.floor((Math.random()) * (max - min + 1)) + min;
+      console.log(randomNumber);
+      $("#cho-img").css('display', ' block');
+      $("#pa-img").css('display', ' none');
+      $("#gu-img").css('display', ' none');
+      $("#com_hand").css('display', ' block');
+      $("#oppnonent-gu-img").css('display', ' none');
+      $("#oppnonent-cho-img").css('display', ' none');
+      $("#oppnonent-pa-img").css('display', ' none');
+      $("#neko-gu-img").css('display', ' none');
+      $("#neko-pa-img").css('display', ' none');
+
+
+      if (randomNumber <= 0) {
+        $("#oppnonent-gu-img").css('display', ' block');
+        $("#result").css('display', ' block');
+        $("#result").text("残念・・・あなたの負けです。");
+      } else if (1 <= randomNumber && randomNumber <= 2) {
+        $("#oppnonent-cho-img").css('display', ' block');
+        $("#result").css('display', ' block');
+        $("#result").text("引き分け！");
+      } else {
+        $("#oppnonent-pa-img").css('display', ' block');
+        $("#result").css('display', ' block');
+        $("#result").text("あなたの勝ちです！！");
+      }
+    });
+
+    // パーボタン
+    $("#par_btn").on("click", function () {
+      const min = 0;
+      const max = 4;
+      const randomNumber = Math.floor((Math.random()) * (max - min + 1)) + min;
+      console.log(randomNumber);
+      $("#pa-img").css('display', ' block');
+      $("#cho-img").css('display', ' none');
+      $("#gu-img").css('display', ' none');
+      $("#com_hand").css('display', ' block');
+      $("#oppnonent-gu-img").css('display', ' none');
+      $("#oppnonent-cho-img").css('display', ' none');
+      $("#oppnonent-pa-img").css('display', ' none');
+      $("#neko-gu-img").css('display', ' none');
+      $("#neko-pa-img").css('display', ' none');
+
+      if (randomNumber <= 0) {
+        $("#oppnonent-gu-img").css('display', ' block');
+        $("#result").css('display', ' block');
+        $("#result").text("あなたの勝ちです！！。");
+      } else if (1 <= randomNumber && randomNumber <= 2) {
+        $("#oppnonent-cho-img").css('display', ' block');
+        $("#result").css('display', ' block');
+        $("#result").text("残念・・・あなたの負けです。");
+      } else {
+        $("#oppnonent-pa-img").css('display', ' block');
+        $("#result").css('display', ' block');
+        $("#result").text("引き分け！");
+      }
+    });
+
+    $(function () {
+
+      // 入力キー配列
+      var input_cmd = [];
+      // ねこねこコマンド配列[n,e,k,o,n,e,k,o]
+      var nekoneko_cmd = [78, 69, 75, 79, 78, 69, 75, 79];
+
+      // キー入力後のキーアップイベントで発動条件を監視します
+      $(window).keyup(function (event) {
+
+        // 入力されたキーコードを入力キー配列へ追加
+        input_cmd.push(event.keyCode);
+
+        // 入力されたキーが正しいか判定
+        // ※ 入力キー配列の長さで何番目の文字を比較するかを判断する
+        if (input_cmd[input_cmd.length - 1] != nekoneko_cmd[input_cmd.length - 1]) {
+          // 入力を間違えた場合、入力キー配列をリセット（最初からやり直し）
+          input_cmd = [];
+        }
+        // 全ての入力コマンドが合致したら処理を発動
+        else if (input_cmd.length == nekoneko_cmd.length) {
+          // ねこねこコマンドによる処理実行！
+          nekoneko_cmd_action();
+          // 処理後、改めて入力キー配列をリセット
+          input_cmd = [];
+        }
+      });
+    });
+
+
+    $(function () {
+      // 変数に要素を入れる
+      var open = $('.modal-open'),
+        close = $('.modal-close'),
+        container = $('.modal-container');
+
+      //開くボタンをクリックしたらモーダルを表示する
+      open.on('click', function () {
+        container.addClass('active');
+        return false;
+      });
+
+      //閉じるボタンをクリックしたらモーダルを閉じる
+      close.on('click', function () {
+        container.removeClass('active');
+      });
+
+      //モーダルの外側をクリックしたらモーダルを閉じる
+      $(document).on('click', function (e) {
+        if (!$(e.target).closest('.modal-body').length) {
+          container.removeClass('active');
+        }
+      });
+    });
+
+    // ねこねこコマンド処理関数
+    function nekoneko_cmd_action() {
+      /*---------------------------------------------
+       ここにねこねこコマンド入力時に発動させたい処理を記載
+      ---------------------------------------------*/
+
+      //肉球ポインターストーカー
+
+
+      //モーダルを表示する
+      $("#modal-container").addClass('active');
+
+      $("#h1").text("ねこねこじゃんけん");
+      $("#com_hand").text("ねこの出した手は？");
+
+      //対戦結果初期設定
+      $("#com_hand").css('display', ' none');
+      $("#result").css('display', ' none');
+      $("#oppnonent-gu-img").css('display', ' none');
+      $("#oppnonent-cho-img").css('display', ' none');
+      $("#oppnonent-pa-img").css('display', ' none');
+      $("#neko-gu-img").css('display', ' none');
+      $("#neko-pa-img").css('display', ' none');
+
+      //ねこと対戦ーグーボタン
+      $("#gu_btn").on("click", function () {
+        const min = 0;
+        const max = 2;
+        const randomNumber = Math.floor((Math.random()) * (max - min + 1)) + min;
+        console.log(randomNumber);
+        $("#gu-img").css('display', ' block');
+        $("#cho-img").css('display', ' none');
+        $("#pa-img").css('display', ' none');
+        $("#com_hand").css('display', ' block');
+        $("#oppnonent-gu-img").css('display', ' none');
+        $("#oppnonent-cho-img").css('display', ' none');
+        $("#oppnonent-pa-img").css('display', ' none');
+        $("#neko-gu-img").css('display', ' none');
+        $("#neko-pa-img").css('display', ' none');
+
+        if (randomNumber <= 0) {
+          $("#gu-img").css('display', ' block');
+          $("#neko-gu-img").css('display', ' block');
+          $("#result").css('display', ' block');
+          $("#result").text("引き分け！");
+        } else {
+          $("#neko-pa-img").css('display', ' block');
+          $("#result").css('display', ' block');
+          $("#result").text("ねこが勝ちました♪");
+        }
+      });
+
+      // ねこと対戦ーチョキボタン
+      $("#cho_btn").on("click", function () {
+        const min = 0;
+        const max = 2;
+        const randomNumber = Math.floor((Math.random()) * (max - min + 1)) + min;
+        console.log(randomNumber);
+        $("#cho-img").css('display', ' block');
+        $("#pa-img").css('display', ' none');
+        $("#gu-img").css('display', ' none');
+        $("#com_hand").css('display', ' block');
+        $("#oppnonent-gu-img").css('display', ' none');
+        $("#oppnonent-cho-img").css('display', ' none');
+        $("#oppnonent-pa-img").css('display', ' none');
+        $("#neko-gu-img").css('display', ' none');
+        $("#neko-pa-img").css('display', ' none');
+
+
+        if (randomNumber <= 0) {
+          $("#neko-gu-img").css('display', ' block');
+          $("#result").css('display', ' block');
+          $("#result").text("ねこが勝ちました♪");
+        } else {
+          $("#neko-pa-img").css('display', ' block');
+          $("#result").css('display', ' block');
+          $("#result").text("ねこが負けてしましました。。");
+        }
+      });
+
+      // ねこと対戦ーパーボタン
+      $("#par_btn").on("click", function () {
+        const min = 0;
+        const max = 2;
+        const randomNumber = Math.floor((Math.random()) * (max - min + 1)) + min;
+        console.log(randomNumber);
+        $("#pa-img").css('display', ' block');
+        $("#cho-img").css('display', ' none');
+        $("#gu-img").css('display', ' none');
+        $("#com_hand").css('display', ' block;')
+        $("#oppnonent-gu-img").css('display', ' none');
+        $("#oppnonent-cho-img").css('display', ' none');
+        $("#oppnonent-pa-img").css('display', ' none');
+        $("#neko-gu-img").css('display', ' none');
+        $("#neko-pa-img").css('display', ' none');
+
+        if (randomNumber <= 0) {
+          $("#neko-gu-img").css('display', ' block');
+          $("#result").css('display', ' block');
+          $("#result").text("ねこが負けてしましました。。");
+        } else {
+          $("#neko-pa-img").css('display', ' block');
+          $("#result").css('display', ' block');
+          $("#result").text("引き分け！");
+        }
+      });
+
+    }
+
+  </script>
+</body>
+
+</html>

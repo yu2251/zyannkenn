@@ -1,0 +1,242 @@
+body {
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    font-size: 32px;
+    position: relative;
+    coursor: none;
+}
+
+body a:hover {
+    cursor: none;
+}
+
+#cursor {
+    position: fixed;
+    width: 40px;
+    height: 40px;
+    margin: -20px 0 0 -20px;
+    z-index: 2;
+    pointer-events: none;
+    transition: transform 0.1s;
+    opacity: 0;
+}
+
+#cursor.active {
+    transform: scale(1.8);
+}
+
+header {
+    background-color: #fff;
+    text-align: center;
+}
+
+/*モーダル本体の指定 + モーダル外側の背景の指定*/
+.modal-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background: rgba(0, 0, 0, 50%);
+    padding: 40px 20px;
+    overflow: auto;
+    opacity: 0;
+    visibility: hidden;
+    transition: .3s;
+    box-sizing: border-box;
+    display: none;
+}
+
+/*モーダル本体の擬似要素の指定*/
+.modal-container:before {
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+}
+
+/*モーダル本体に「active」クラス付与した時のスタイル*/
+.modal-container.active {
+    opacity: 1;
+    visibility: visible;
+    display: block;
+}
+
+/*モーダル枠の指定*/
+.modal-body {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    max-width: 500px;
+    width: 90%;
+}
+
+/*モーダルを閉じるボタンの指定*/
+.modal-close {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: -40px;
+    right: -40px;
+    width: 40px;
+    height: 40px;
+    font-size: 40px;
+    color: #fff;
+    cursor: pointer;
+}
+
+/*モーダル内のコンテンツの指定*/
+.modal-content {
+    background: #fff;
+    text-align: center;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    border-bottom: 1px solid #ccc;
+}
+
+footer {
+    font-size: 15px;
+    background-color: #fff;
+    border-bottom: 1px solid #ccc;
+    text-align: center;
+}
+
+p {
+    font-size: 50%;
+    font-weight: bold;
+    text-align: center;
+    border-bottom: 1px solid #fff;
+    height: 10px;
+}
+
+.modal-content img {
+    width: 100%;
+    display: flex;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+ul {
+    padding: 0;
+    display: table;
+    /* 定義 */
+    table-layout: fixed;
+    width: 100%;
+}
+
+li {
+    text-align: center;
+    list-style-type: none;
+    background-color: #FFF;
+    display: table-cell;
+    /* 定義 */
+    cursor: pointer;
+}
+
+.btn-box {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.btn-box::before {
+    padding-top: 100%;
+}
+
+.fbtn-box div {
+    width: 50%;
+}
+
+img {
+    max-width: 65%;
+}
+
+ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    margin: 0;
+    padding: 0;
+}
+
+.ul img {
+    width: 30%;
+    height: auto;
+    display: block;
+    opacity: 1;
+    transition: .3s;
+}
+
+li:hover img {
+    opacity: 0.5;
+}
+
+.oppnonent {
+    margin-top: 25px;
+    margin-bottom: 20px;
+}
+
+.oppnonent-img {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 25px;
+}
+
+.com_hand {
+    display: none;
+    text-align: center;
+}
+
+.oppnonent-gu-img {
+    width: 30%;
+    display: none;
+    text-align: center;
+}
+
+.oppnonent-pa-img {
+    width: 30%;
+    display: none;
+    text-align: center;
+}
+
+.oppnonent-cho-img {
+    width: 30%;
+    display: none;
+    text-align: center;
+}
+
+.neko-gu-img {
+    width: 30%;
+    display: none;
+    text-align: center;
+}
+
+.neko-pa-img {
+    width: 30%;
+    display: none;
+    text-align: center;
+}
+
+.result {
+    display: none;
+    margin-bottom: 25px;
+    align-items: center;
+    text-align: center;
+    width: 600px;
+    height: 50px;
+    font-weight: bold;
+    color: #fff;
+    background: #000;
+    margin: auto;
+    cursor: pointer;
+}
